@@ -36,7 +36,7 @@ wire C12_1;
 Full_Adder FA12(.a(pp5[7]),.b(pp6[6]),.Cin(pp7[5]),.Cout(C12_1),.sum(P[12]));
 //column 13
 wire C13_1;
-Full_Adder FA13(.a(pp6[7]),.b(pp7[6]),.Cin(C12_2),.Cout(C13_1),.sum(P[13]));
+Full_Adder FA13(.a(pp6[7]),.b(pp7[6]),.Cin(C12_1),.Cout(C13_1),.sum(P[13]));
 //column 14 and 15
 Full_Adder FA14(.a(pp7[7]),.b(0),.Cin(C13_1),.Cout(P[15]),.sum(P[14]));
 endmodule

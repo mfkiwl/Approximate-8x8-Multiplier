@@ -24,6 +24,7 @@
 
 module PBOM8_73Y(input [7:0] A,B, output[15:0]P);
 
+wire [11:0] P1,P2;
 
 PBO_3 Multiplier1(.A(A),.B(B[7:4]),.P(P1));
 PBO_7 Multiplier2(.A(A),.B(B[3:0]),.P(P2));
