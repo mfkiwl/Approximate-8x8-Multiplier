@@ -1,6 +1,4 @@
 `timescale 1ns / 1ps
-`include "Full_Adder.v"
-`include "Half_Adder.v"
 
 // Create Date: 03/25/2026 11:51:56 PM
 // Design Name: PBO_3 Approximate Multiplier Design 1 (8x4)
@@ -34,7 +32,7 @@ Full_Adder FA3(.a(pp0[5]),.b(pp1[4]),.Cin(pp2[3]),.sum(S5_1),.Cout(C5_1));
 Full_Adder FA4(.a(C4_2),.b(pp3[2]),.Cin(C5_1),.sum(S5_2),.Cout(C5_2));
 Full_Adder FA5(.a(S5_2),.b(S5_1),.Cin(C5_2),.sum(P[5]),.Cout(C5_3));
 //column 6
-wire S6_1,C6_1,C6_3,C6_2;
+wire S6_1,S6_2,C6_1,C6_3,C6_2;
 Full_Adder FA6(.a(pp0[6]),.b(pp1[5]),.Cin(C5_3),.sum(S6_1),.Cout(C6_1));
 Full_Adder FA7(.a(pp2[4]),.b(pp3[3]),.Cin(C6_1),.sum(S6_2),.Cout(C6_2));
 Full_Adder FA8(.a(C6_2),.b(S6_2),.Cin(S6_1),.sum(P[6]),.Cout(C6_3));

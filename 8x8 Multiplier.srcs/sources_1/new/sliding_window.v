@@ -83,9 +83,9 @@ module sliding_window #(
     end
 
     // Window outputs
-    assign w00 = sr2_2; assign w01 = sr2_1; assign w02 = sr2_0;
-    assign w10 = sr1_2; assign w11 = sr1_1; assign w12 = sr1_0;
-    assign w20 = sr0_2; assign w21 = sr0_1; assign w22 = sr0_0;
+assign w00 = sr0_2; assign w01 = sr0_1; assign w02 = sr0_0;
+assign w10 = sr1_2; assign w11 = sr1_1; assign w12 = sr1_0;
+assign w20 = sr2_2; assign w21 = sr2_1; assign w22 = sr2_0;
 
     // Window valid when at least 2 rows and 2 cols filled
     assign window_valid = pixel_valid

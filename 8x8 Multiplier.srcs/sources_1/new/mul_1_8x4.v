@@ -1,6 +1,4 @@
 `timescale 1ns / 1ps
-`include "Full_Adder.v"
-`include "Half_Adder.v"
 `include "compressor_1.v"
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 

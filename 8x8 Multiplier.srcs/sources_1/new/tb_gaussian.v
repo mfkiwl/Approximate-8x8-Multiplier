@@ -3,9 +3,8 @@
 
 module tb_gaussian;
 
-    // ── ONLY CHANGE THIS LINE FOR EACH DESIGN ────────────────────
-    parameter DESIGN_NAME = "PBOM8_73Y";
-    // ─────────────────────────────────────────────────────────────
+    // ONLY CHANGE THIS LINE FOR EACH DESIGN 
+    parameter DESIGN_NAME = "PBO_3_8X8";
 
     // Everything automatic from image_params.vh
     parameter IMG_WIDTH  = `GAUSS_WIDTH;
@@ -39,7 +38,7 @@ module tb_gaussian;
     integer       valid_count;
     integer       i, idx;
 
-    // ── Load image using $fscanf (reads DECIMAL) ──────────────────
+    // Load image using $fscanf (reads DECIMAL)
     initial begin
         file_handle = $fopen(`GAUSS_INPUT, "r");
 
@@ -63,7 +62,7 @@ module tb_gaussian;
         $display("Last pixel  : %0d", image_mem[TOTAL_PIX-1]);
     end
 
-    // ── Write output pixels to file ───────────────────────────────
+    // Write output pixels to file
     always @(posedge clk) begin
         if (valid_out) begin
             $fwrite(out_file, "%0d\n", pixel_out);
@@ -71,7 +70,7 @@ module tb_gaussian;
         end
     end
 
-    // ── Main simulation ───────────────────────────────────────────
+    // Main simulation
     initial begin
         out_file = $fopen(
             {`SIM_OUTPUT, "gaussian_", DESIGN_NAME, ".txt"},

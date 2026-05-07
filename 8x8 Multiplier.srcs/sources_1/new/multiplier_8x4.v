@@ -1,6 +1,4 @@
 `timescale 1ns / 1ps
-`include "Full_Adder.v"
-`include "Half_Adder.v"
 
 // Create Date: 03/19/2026 02:30:57 PM
 // Design Name: Exact 8x4 Multiplier

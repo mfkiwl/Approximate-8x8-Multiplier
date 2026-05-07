@@ -29,11 +29,10 @@ wire [11:0] P1,P2;
 PBO_3 Multiplier1(.A(A),.B(B[7:4]),.P(P1));
 PBO_7 Multiplier2(.A(A),.B(B[3:0]),.P(P2));
 
-wire [15:0] P1_extend, P2_extend;
+wire [15:0] P1_extend;
 assign P1_extend = {P1,4'b0000};
-assign P2_extend = {4'b0000,P2};
 
-assign P[3:0] = P2_extend[3:0];
-assign P[11:4] = P2_extend[11:4] | P1_extend[11:4];
+assign P[3:0] = P2[3:0];
+assign P[11:4] = P2[11:4] | P1_extend[11:4];
 assign P[15:12] = P1_extend[15:12];
 endmodule

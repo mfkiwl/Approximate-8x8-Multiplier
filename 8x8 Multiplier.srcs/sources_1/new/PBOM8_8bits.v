@@ -30,7 +30,7 @@ assign P[7] = pp0[7]|pp1[6]|pp2[5]|pp3[4]|pp4[3]|pp5[2]|pp6[1]|pp7[0];
 assign P[8] = pp1[7]|pp2[6]|pp3[5]|pp4[4]|pp5[3]|pp6[2]|pp7[1];
 //column 9
 wire S9_1,S9_2,S9_3,C9_1,C9_2,C9_3,C9_4;
-Full_Adder FA1(.a(pp2[7]),.b(pp3[6]),.Cin(pp4[5]),.Cout(C9_1),.sum(9_1));
+Full_Adder FA1(.a(pp2[7]),.b(pp3[6]),.Cin(pp4[5]),.Cout(C9_1),.sum(S9_1));
 Full_Adder FA2(.a(pp5[4]),.b(pp6[3]),.Cin(C9_1),.Cout(C9_2),.sum(S9_2));
 Full_Adder FA3(.a(pp7[2]),.b(S9_1),.Cin(C9_2),.Cout(C9_3),.sum(S9_3));
 Full_Adder FA4(.a(S9_2),.b(S9_3),.Cin(C9_3),.Cout(C9_4),.sum(P[9]));

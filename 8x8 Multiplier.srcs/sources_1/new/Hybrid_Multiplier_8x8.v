@@ -2,8 +2,6 @@
 `include "mul_2_8x4.v"
 `include "mul_1_8x4.v"
 `include "compressor_1.v"
-`include "Full_Adder.v"
-`include "Half_Adder.v"
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 

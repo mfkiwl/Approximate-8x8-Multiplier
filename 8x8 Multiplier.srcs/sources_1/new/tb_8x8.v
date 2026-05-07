@@ -21,37 +21,44 @@
 
 
 module tb_8x8();
-reg [7:0] A,B;
-wire [15:0] P;
-/*
-PBO_3_8X8 dut1(.A(A),.B(B),.P(P));
-*/
-/*
-PBO_5_8X8 dut2(.A(A),.B(B),.P(P));
-*/
-/*
-PBO_7_8X8 dut3(.A(A),.B(B),.P(P));
-*/
-/*
-PBOM8_73Y dut4(.A(A),.B(B),.P(P));
-*/
-Hybrid_Multiplier_8x8 dut5(.A(A),.B(B),.P(P));
-integer i;
-reg [15:0] exact;
-integer error;
-initial begin
-    $display("A\tB\tApprox\tExact\tError");
 
-    // random testing
-    for(i = 0; i < 20; i = i + 1) begin
-        A = $random % 256;
-        B = $random % 256;
-        #10;
-        exact = A * B;
-        error = exact - P;
-        $display("%d\t%d\t%d\t%d\t%d", A, B, P, exact, error);
+reg  [7:0] A, B;
+wire [15:0] P;
+
+integer i;
+/*
+PBOM8_73Y dut (
+    .A(A),
+    .B(B),
+    .P(P)
+);
+*/
+initial begin
+
+    // CHECK x1
+    for(i=0; i<256; i=i+1) begin
+
+        A = i;
+        B = 8'd1;
+        #1;
+
+        if(P !== i)
+            $display("ERROR x1: A=%d P=%d", A, P);
     end
 
+    // CHECK x2
+    for(i=0; i<256; i=i+1) begin
+
+        A = i;
+        B = 8'd2;
+        #1;
+
+        if(P !== (i<<1))
+            $display("ERROR x2: A=%d P=%d", A, P);
+    end
+
+    $display("DONE");
     $finish;
+
 end
 endmodule

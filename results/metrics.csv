@@ -1,2 +1,6 @@
 Design,Gaussian_PSNR(dB),Gaussian_SSIM(%),Sobel_PSNR(dB),Sobel_SSIM(%)
-PBOM8_73Y,6.9233,41.1794,12.0388,61.7872
+Hybrid_Multiplier_8x8,24.97,82.782,inf,100.0
+PBOM8_11bits,29.0661,86.9462,inf,100.0
+PBOM8_8bits,26.2502,83.8731,inf,100.0
+PBO_3_8X8,41.7271,99.6571,inf,100.0
+multiplier_8x8,inf,100.0,inf,100.0

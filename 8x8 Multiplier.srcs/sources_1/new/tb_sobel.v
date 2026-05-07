@@ -3,8 +3,8 @@
 
 module tb_sobel;
 
-    // ── ONLY CHANGE THIS LINE FOR EACH DESIGN ────────────────────
-    parameter DESIGN_NAME = "PBOM8_73Y";
+    // ONLY CHANGE THIS LINE FOR EACH DESIGN
+    parameter DESIGN_NAME = "PBO_3_8X8";
     
 
     // Everything automatic from image_params.vh
