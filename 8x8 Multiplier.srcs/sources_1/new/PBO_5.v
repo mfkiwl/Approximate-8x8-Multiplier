@@ -1,6 +1,5 @@
 `timescale 1ns / 1ps
-`include "Full_Adder.v"
-`include "Half_Adder.v"
+
 
 // Create Date: 03/25/2026 11:51:56 PM
 // Design Name: PBO_3 Approximate Multiplier Design 1 (8x4)

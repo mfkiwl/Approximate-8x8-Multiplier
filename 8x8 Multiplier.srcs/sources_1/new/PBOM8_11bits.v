@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-
+`include "Full_Adder.v"
 // Create Date: 04/07/2026 11:52:20 PM
 // Design Name: 
 // Module Name: PBOM8_8bits
