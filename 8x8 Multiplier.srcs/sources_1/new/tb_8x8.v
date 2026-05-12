@@ -23,24 +23,73 @@
 module tb_8x8();
 
 reg  [7:0] A, B;
-wire [15:0] P;
 
-    initial begin
 
-        A = 8'd5;   B = 8'd3;
+// ======================================================
+wire [15:0] P8;
+wire [15:0] P11;
+
+// ======================================================
+// Instantiate BOTH designs
+// ======================================================
+
+PBOM8_8bits dut1 (
+    .A(A),
+    .B(B),
+    .P(P8)
+);
+
+PBOM8_11bits dut2 (
+    .A(A),
+    .B(B),
+    .P(P11)
+);
+
+// ======================================================
+
+task run_test;
+
+    input [7:0] a_in;
+    input [7:0] b_in;
+
+    reg [15:0] exact;
+
+    begin
+
+        A = a_in;
+        B = b_in;
+
+        exact = a_in * b_in;
+
         #10;
 
-        A = 8'd10;  B = 8'd12;
-        #10;
+        $display(
+        "A=%3d  B=%3d  Exact=%5d   PBOM8_8bits=%5d   PBOM8_11bits=%5d",
+        A, B, exact, P8, P11
+        );
 
-        A = 8'd25;  B = 8'd4;
-        #10;
-
-        A = 8'd255; B = 8'd2;
-        #10;
-
-        $finish;
     end
 
+endtask
 
+
+initial begin
+
+    $display("====================================================================");
+    $display("                 MULTIPLIER COMPARISON");
+    $display("====================================================================");
+
+    run_test(10 , 10);
+    run_test(15 , 15);
+    run_test(50 , 50);
+    run_test(100,100);
+    run_test(128,  2);
+    run_test(200,100);
+    run_test(255,255);
+
+    $display("====================================================================");
+
+    $finish;
+
+end
 endmodule

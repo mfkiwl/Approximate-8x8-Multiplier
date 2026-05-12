@@ -1,0 +1,1 @@
+"lib_PBOM8_11bits.tb_PBOM8_11bits" --lib "lib_PBOM8_11bits=C:\Users\ankit\8x8 Multiplier\sim_work\PBOM8_11bits\lib_PBOM8_11bits" --snapshot "snap_PBOM8_11bits" --log "xelab.log" 

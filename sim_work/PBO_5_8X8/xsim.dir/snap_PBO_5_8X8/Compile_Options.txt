@@ -1,0 +1,1 @@
+"lib_PBO_5_8X8.tb_PBO_5_8X8" --lib "lib_PBO_5_8X8=C:\Users\ankit\8x8 Multiplier\sim_work\PBO_5_8X8\lib_PBO_5_8X8" --snapshot "snap_PBO_5_8X8" --log "xelab.log" 

@@ -1,0 +1,1 @@
+"lib_Hybrid_Multiplier_8x8.tb_Hybrid_Multiplier_8x8" --lib "lib_Hybrid_Multiplier_8x8=C:\Users\ankit\8x8 Multiplier\sim_work\Hybrid_Multiplier_8x8\lib_Hybrid_Multiplier_8x8" --snapshot "snap_Hybrid_Multiplier_8x8" --log "xelab.log" 

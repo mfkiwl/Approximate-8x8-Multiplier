@@ -1,0 +1,1 @@
+"lib_PBOM8_53N.tb_PBOM8_53N" --lib "lib_PBOM8_53N=C:\Users\ankit\8x8 Multiplier\sim_work\PBOM8_53N\lib_PBOM8_53N" --snapshot "snap_PBOM8_53N" --log "xelab.log" 

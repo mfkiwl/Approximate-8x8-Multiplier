@@ -1,0 +1,17 @@
+0.7
+2020.2
+Nov  8 2024
+22:36:57
+C:/Users/ankit/8x8 Multiplier/8x8 Multiplier.srcs/sources_1/new/Full_Adder.v,1774647126,verilog,,,,Full_Adder,,,,,,,,
+C:/Users/ankit/8x8 Multiplier/8x8 Multiplier.srcs/sources_1/new/Half_Adder.v,1774647126,verilog,,,,Half_Adder,,,,,,,,
+C:/Users/ankit/8x8 Multiplier/8x8 Multiplier.srcs/sources_1/new/Multiplier_4x4.v,1774647126,verilog,,,,Multiplier_4x4,,,,,,,,
+C:/Users/ankit/8x8 Multiplier/8x8 Multiplier.srcs/sources_1/new/PBOM8_73Y.v,1778285109,verilog,,,,PBOM8_73Y,,,,,,,,
+C:/Users/ankit/8x8 Multiplier/8x8 Multiplier.srcs/sources_1/new/PBO_3.v,1778117739,verilog,,,,PBO_3,,,,,,,,
+C:/Users/ankit/8x8 Multiplier/8x8 Multiplier.srcs/sources_1/new/PBO_5.v,1778284852,verilog,,,,PBO_5,,,,,,,,
+C:/Users/ankit/8x8 Multiplier/8x8 Multiplier.srcs/sources_1/new/PBO_7.v,1778114766,verilog,,,C:/Users/ankit/8x8 Multiplier/8x8 Multiplier.srcs/sources_1/new/Full_Adder.v;C:/Users/ankit/8x8 Multiplier/8x8 Multiplier.srcs/sources_1/new/Half_Adder.v,PBO_7,,,,,,,,
+C:/Users/ankit/8x8 Multiplier/8x8 Multiplier.srcs/sources_1/new/compressor_1.v,1776032708,verilog,,,,compressor_1,,,,,,,,
+C:/Users/ankit/8x8 Multiplier/8x8 Multiplier.srcs/sources_1/new/compressor_2.v,1776033554,verilog,,,,compressor_2,,,,,,,,
+C:/Users/ankit/8x8 Multiplier/8x8 Multiplier.srcs/sources_1/new/mul_1_8x4.v,1778117385,verilog,,,C:/Users/ankit/8x8 Multiplier/8x8 Multiplier.srcs/sources_1/new/compressor_1.v,mul_1_8x4,,,,,,,,
+C:/Users/ankit/8x8 Multiplier/8x8 Multiplier.srcs/sources_1/new/mul_2_8x4.v,1778117404,verilog,,,C:/Users/ankit/8x8 Multiplier/8x8 Multiplier.srcs/sources_1/new/compressor_1.v,mul_2_8x4,,,,,,,,
+C:/Users/ankit/8x8 Multiplier/8x8 Multiplier.srcs/sources_1/new/multiplier_8x4.v,1778117818,verilog,,,,multiplier_8x4,,,,,,,,
+C:/Users/ankit/8x8 Multiplier/sim_work/PBOM8_73Y/tb_PBOM8_73Y.v,1778587357,verilog,,,,tb_PBOM8_73Y,,,,,,,,
