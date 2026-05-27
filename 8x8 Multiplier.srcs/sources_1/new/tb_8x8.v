@@ -26,14 +26,14 @@ reg  [7:0] A, B;
 
 
 // ======================================================
-wire [15:0] P8;
-wire [15:0] P11;
+wire [15:0] P9;
+
 
 // ======================================================
 // Instantiate BOTH designs
 // ======================================================
 
-PBOM8_8bits dut1 (
+/*PBOM8_8bits dut1 (
     .A(A),
     .B(B),
     .P(P8)
@@ -44,7 +44,9 @@ PBOM8_11bits dut2 (
     .B(B),
     .P(P11)
 );
+*/
 
+Multiplier_using_exact_comp dut3(.A(A),.B(B),.P(P9));
 // ======================================================
 
 task run_test;
@@ -64,8 +66,8 @@ task run_test;
         #10;
 
         $display(
-        "A=%3d  B=%3d  Exact=%5d   PBOM8_8bits=%5d   PBOM8_11bits=%5d",
-        A, B, exact, P8, P11
+        "A=%3d  B=%3d  Exact=%5d   Multiplier_using_exact_comp=%5d" ,
+        A, B, exact, P9
         );
 
     end
@@ -81,12 +83,30 @@ initial begin
 
     run_test(10 , 10);
     run_test(15 , 15);
-    run_test(50 , 50);
+    run_test(255,247);
     run_test(100,100);
-    run_test(128,  2);
+    run_test(255,191);
     run_test(200,100);
     run_test(255,255);
-
+    run_test(251,255);
+    run_test(123,156);
+    run_test(220,37);    
+    run_test(8'b00000001, 8'b11111111);  // A=1,   B=255
+run_test(8'b11111111, 8'b00000100);  // A=255, B=4
+run_test(8'b00000001, 8'b00000100);  // A=1,   B=4  → tests pp[2][0] in isolation
+run_test(8'b11111111, 8'b10000000);  // A=255, B=128
+run_test(8'b10000000, 8'b11111111);  // A=128, B=255
+    run_test(8'hFF, 8'hFF);  // 255×255, error=128
+run_test(8'hFE, 8'hFF);  // 254×255 — does it fail?
+run_test(8'hFF, 8'hFE);  // 255×254 — does it fail?
+run_test(8'hFF, 8'hFD);  // 255×253 — does it fail?
+run_test(8'hFF, 8'hFB);  // 255×251 — does it fail?
+run_test(8'hFF, 8'hF7);  // 255×247 — fails (known)
+run_test(8'hFF, 8'hEF);  // 255×239, B[4]=0
+run_test(8'hFF, 8'hDF);  // 255×223, B[5]=0
+run_test(8'hFF, 8'hBF);  // 255×191 — fails (known)
+    
+    
     $display("====================================================================");
 
     $finish;

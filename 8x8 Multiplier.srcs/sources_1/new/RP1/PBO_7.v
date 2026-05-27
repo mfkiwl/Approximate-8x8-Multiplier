@@ -11,7 +11,7 @@ module PBO_7(
 input [7:0] A,
 input [3:0] B,
 output [11:0] P
-    );
+);
 
 wire [7:0] pp0, pp1,pp2,pp3;
 assign pp0 = A & {8{B[0]}};

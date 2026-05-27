@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
-`include "mul_2_8x4.v"
-`include "mul_1_8x4.v"
 `include "compressor_1.v"
+`include "mul_1_8x4.v"
+`include "mul_2_8x4.v"
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 

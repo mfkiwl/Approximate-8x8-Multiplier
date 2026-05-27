@@ -23,5 +23,5 @@
 module Full_Adder(input a, b, Cin,
  output Cout,sum);
  assign sum = a^b^Cin;
- assign Cout = (a&b)|(b&Cin)|(a&Cin);
+ assign Cout = (a & b) | (Cin & (a ^ b));
 endmodule
