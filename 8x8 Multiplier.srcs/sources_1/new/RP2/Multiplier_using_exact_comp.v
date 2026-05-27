@@ -55,19 +55,19 @@ compressor_exact COL6_COMP1(.X1(pp[0][6]),.X2(pp[1][5]),.X3(pp[2][4]),.X4(pp[3][
 Half_Adder COL6_HA1(.a(pp[4][2]),.b(pp[5][1]),.sum(s6_ha),.carry(c6_to_7_ha));
 
 //column 7
-wire s7_comp1,c7_to_8_comp1,c7_to_c7,s7_comp2,c7_to_8_comp2,c7_to_c8;
-compressor_exact COL7_COMP1(.X1(pp[0][7]),.X2(pp[1][6]),.X3(pp[2][5]),.X4(pp[3][4]),.Cin(c6_to_c7),.S(s7_comp1),.C(c7_to_8_comp1),.Cout(c7_to_c7));
-compressor_exact COL7_COMP2(.X1(pp[4][3]),.X2(pp[5][2]),.X3(pp[6][1]),.X4(pp[7][0]),.Cin(c7_to_c7),.S(s7_comp2),.C(c7_to_8_comp2),.Cout(c7_to_c8));
+wire s7_comp1,c7_to_8_comp1,c7_to_c8_1,s7_comp2,c7_to_8_comp2,c7_to_c8_2;
+compressor_exact COL7_COMP1(.X1(pp[0][7]),.X2(pp[1][6]),.X3(pp[2][5]),.X4(pp[3][4]),.Cin(c6_to_c7),.S(s7_comp1),.C(c7_to_8_comp1),.Cout(c7_to_c8_1));
+compressor_exact COL7_COMP2(.X1(pp[4][3]),.X2(pp[5][2]),.X3(pp[6][1]),.X4(pp[7][0]),.Cin(1'b0),.S(s7_comp2),.C(c7_to_8_comp2),.Cout(c7_to_c8_2));
 
 //column 8
-wire s8_comp,c8_to_9_comp,c8_to_c9,s8_fa,c8_to_9_fa;
-compressor_exact COL8_COMP1(.X1(pp[1][7]),.X2(pp[2][6]),.X3(pp[3][5]),.X4(pp[4][4]),.Cin(c7_to_c8),.S(s8_comp),.C(c8_to_9_comp),.Cout(c8_to_c9));
-Full_Adder COL8_FA1(.a(pp[5][3]),.b(pp[6][2]),.Cin(pp[7][1]),.sum(s8_fa),.Cout(c8_to_9_fa));
+wire s8_comp1,c8_to_9_comp1,c8_to_c9_1,s8_comp2,c8_to_9_comp2,c8_to_9_2;
+compressor_exact COL8_COMP1(.X1(pp[1][7]),.X2(pp[2][6]),.X3(pp[3][5]),.X4(pp[4][4]),.Cin(c7_to_c8_1),.S(s8_comp1),.C(c8_to_9_comp1),.Cout(c8_to_c9_1));
+compressor_exact COL8_COMP2(.X1(pp[5][3]),.X2(pp[6][2]),.X3(pp[7][1]),.X4(1'b0),.Cin(c7_to_c8_2),.S(s8_comp2),.C(c8_to_9_comp2),.Cout(c8_to_c9_2));
 
 //column 9
-wire s9_comp,c9_to_10_comp,c9_to_c10,s9_ha,c9_to_10_ha;
-compressor_exact COL9_COMP1(.X1(pp[2][7]),.X2(pp[3][6]),.X3(pp[4][5]),.X4(pp[5][4]),.Cin(c8_to_c9),.S(s9_comp),.C(c9_to_10_comp),.Cout(c9_to_c10));
-Half_Adder COL9_HA1(.a(pp[6][3]),.b(pp[7][2]),.sum(s9_ha),.carry(c9_to_10_ha));
+wire s9_comp,c9_to_10_comp,c9_to_c10,s9_fa,c9_to_10_fa;
+compressor_exact COL9_COMP1(.X1(pp[2][7]),.X2(pp[3][6]),.X3(pp[4][5]),.X4(pp[5][4]),.Cin(c8_to_c9_1),.S(s9_comp),.C(c9_to_10_comp),.Cout(c9_to_c10));
+Full_Adder COL9_FA1(.a(pp[6][3]),.b(pp[7][2]),.Cin(c8_to_c9_2),.sum(s9_fa),.Cout(c9_to_10_fa));
 
 //column 10
 wire s10,c10_to_11,c10_to_c11;
@@ -81,7 +81,7 @@ Full_Adder COL11_FA1(.a(pp[4][7]),.b(pp[5][6]),.Cin(c10_to_c11),.sum(s11),.Cout(
 
 //column 2
 wire s2_b,c2_to_3_;
-Half_Adder COL2_HA2(.a(pp[0][2]),.b(pp[1][1]),.sum(s2_b),.carry(c2_to_3_));
+Full_Adder COL2_FA2(.a(pp[0][2]),.b(pp[1][1]),.Cin(pp[2][0]),.sum(s2_b),.Cout(c2_to_3_));
 
 //column 3
 wire s3_b,c3_to_4_,c3_to_c4_;
@@ -105,15 +105,15 @@ compressor_exact COL7_COMP1_2(.X1(s7_comp1),.X2(s7_comp2),.X3(c6_to_7_comp),.X4(
 
 //column 8
 wire s8_b,c8_to_9_,c8_to_c9_;
-compressor_exact COL8_COMP1_2(.X1(s8_comp),.X2(s8_fa),.X3(c7_to_8_comp1),.X4(c7_to_8_comp2),.Cin(c7_to_c8_),.S(s8_b),.C(c8_to_9_),.Cout(c8_to_c9_));
+compressor_exact COL8_COMP1_2(.X1(s8_comp1),.X2(s8_comp2),.X3(c7_to_8_comp1),.X4(c7_to_8_comp2),.Cin(c7_to_c8_),.S(s8_b),.C(c8_to_9_),.Cout(c8_to_c9_));
 
 //column 9
 wire s9_b,c9_to_10_,c9_to_c10_;
-compressor_exact COL9_COMP1_2(.X1(s9_comp),.X2(s9_ha),.X3(c8_to_9_comp),.X4(c8_to_9_fa),.Cin(c8_to_c9_),.S(s9_b),.C(c9_to_10_),.Cout(c9_to_c10_));
+compressor_exact COL9_COMP1_2(.X1(s9_comp),.X2(s9_fa),.X3(c8_to_9_comp1),.X4(c8_to_9_comp2),.Cin(c8_to_c9_),.S(s9_b),.C(c9_to_10_),.Cout(c9_to_c10_));
 
 //column 10
 wire s10_b,c10_to_11_,c10_to_c11_;
-compressor_exact COL10_COMP1_2(.X1(pp[7][3]),.X2(s10),.X3(c9_to_10_comp),.X4(c9_to_10_ha),.Cin(c9_to_c10_),.S(s10_b),.C(c10_to_11_),.Cout(c10_to_c11_));
+compressor_exact COL10_COMP1_2(.X1(pp[7][3]),.X2(s10),.X3(c9_to_10_comp),.X4(c9_to_10_fa),.Cin(c9_to_c10_),.S(s10_b),.C(c10_to_11_),.Cout(c10_to_c11_));
 
 //column 11
 wire s11_b,c11_to_12_,c11_to_c12_;
@@ -129,8 +129,10 @@ Full_Adder COL113_FA2(.a(pp[6][7]),.b(pp[7][6]),.Cin(c12_to_c13_),.sum(s13_b),.C
 
 //STAGE 3
 wire [13:0]a,b,S;
-assign a = {pp[7][7], s13_b, s12_b, s11_b, s10_b, s9_b, s8_b, s7_b, s6_b, s5_b, s4_b, s3_b, s2_b, pp[0][1]};
-assign b = {c13_to_14_, c12_to_13_, c11_to_12_, c10_to_11_, c9_to_10_, c8_to_9_, c7_to_8_, c6_to_7_, c5_to_6_, c4_to_5_, c3_to_4_, c2_to_3_, pp[2][0], pp[1][0]};
+assign a = {pp[7][7], s13_b, s12_b, s11_b, s10_b, s9_b, s8_b, s7_b,s6_b, s5_b, s4_b, s3_b, s2_b, pp[0][1]};
+
+assign b = {c13_to_14_, c12_to_13_, c11_to_12_, c10_to_11_, c9_to_10_,c8_to_9_,c7_to_8_,c6_to_7_,c5_to_6_,c4_to_5_,c3_to_4_,c2_to_3_,1'b0,pp[1][0]};
+
 assign {P[15], P[14:1]} = a + b;
 
 endmodule
