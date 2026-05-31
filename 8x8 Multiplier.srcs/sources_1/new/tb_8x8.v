@@ -26,7 +26,7 @@ reg  [7:0] A, B;
 
 
 // ======================================================
-wire [15:0] P9;
+wire [15:0] P10;
 
 
 // ======================================================
@@ -44,9 +44,13 @@ PBOM8_11bits dut2 (
     .B(B),
     .P(P11)
 );
-*/
+
 
 Multiplier_using_exact_comp dut3(.A(A),.B(B),.P(P9));
+*/
+
+A1_8x8 dut3(.A(A),.B(B),.P(P10));
+
 // ======================================================
 
 task run_test;
@@ -66,8 +70,8 @@ task run_test;
         #10;
 
         $display(
-        "A=%3d  B=%3d  Exact=%5d   Multiplier_using_exact_comp=%5d" ,
-        A, B, exact, P9
+        "A=%3d  B=%3d  Exact=%5d   A1_8x8=%5d" ,
+        A, B, exact, P10
         );
 
     end
@@ -81,16 +85,7 @@ initial begin
     $display("                 MULTIPLIER COMPARISON");
     $display("====================================================================");
 
-    run_test(10 , 10);
-    run_test(15 , 15);
-    run_test(255,247);
-    run_test(100,100);
-    run_test(255,191);
-    run_test(200,100);
-    run_test(255,255);
-    run_test(251,255);
-    run_test(123,156);
-    run_test(220,37);    
+ 
     run_test(8'b00000001, 8'b11111111);  // A=1,   B=255
 run_test(8'b11111111, 8'b00000100);  // A=255, B=4
 run_test(8'b00000001, 8'b00000100);  // A=1,   B=4  → tests pp[2][0] in isolation
@@ -105,7 +100,13 @@ run_test(8'hFF, 8'hF7);  // 255×247 — fails (known)
 run_test(8'hFF, 8'hEF);  // 255×239, B[4]=0
 run_test(8'hFF, 8'hDF);  // 255×223, B[5]=0
 run_test(8'hFF, 8'hBF);  // 255×191 — fails (known)
-    
+run_test(8'd1, 8'd16);
+run_test(8'd1, 8'd32);
+run_test(8'd1, 8'd64);
+run_test(8'd1, 8'd128);
+run_test(8'd2, 8'd128);
+run_test(8'd16, 8'd16);
+run_test(8'd32, 8'd32);
     
     $display("====================================================================");
 
