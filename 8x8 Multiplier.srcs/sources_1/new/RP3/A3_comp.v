@@ -1,12 +1,11 @@
 `timescale 1ns / 1ps
-
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
 // 
-// Create Date: 04/01/2026 12:03:08 AM
+// Create Date: 06/02/2026 02:06:12 AM
 // Design Name: 
-// Module Name: PBO_3_8X8
+// Module Name: A3_comp
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -21,14 +20,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module PBO_5_8X8(input [7:0] A,B, output [15:0] P);
-wire [3:0] B_H, B_L;
-assign B_H = B[7:4];
-assign B_L = B[3:0];
+module A3_comp(A1,A2,A3,A4,sum,carry);
+input A1,A2,A3,A4;
+output sum,carry;
 
-wire [11:0] P1,P2;
-PBO_5 Pb1(.A(A),.B(B_L),.P(P1));
-multiplier_8x4 Pb2(.A(A),.B(B_H),.P(P2));
+assign carry = (A1|A2);
 
-assign P = P1 + (P2<<4);
+mux_2x1 M1(.s(A1^A2),.a(A3|A4),.b(A3&A4),.y(sum));
 endmodule

@@ -1,6 +1,5 @@
 `timescale 1ns / 1ps
-`include "Full_Adder.v"
-`include "Half_Adder.v"
+
 
 // Create Date: 04/03/2026 07:30:13 PM
 // Design Name: 

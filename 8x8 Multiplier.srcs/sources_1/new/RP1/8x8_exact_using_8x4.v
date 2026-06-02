@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-`include "multiplier_8x4.v"
+
 
 // Create Date: 03/19/2026 02:29:17 PM
 // Design Name: Exact Multiplier 8x8

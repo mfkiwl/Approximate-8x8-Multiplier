@@ -36,8 +36,8 @@ module Error_tb;
 
     integer i, j, fd;
 
-    multiplier_8x8 uut_exact (.A(A), .B(B), .P(exact_out));
-    Hybrid_Multiplier_8x8 uut_approx  (.A(A), .B(B), .P(approx_out));
+    Multiplier_using_exact_comp uut_exact (.A(A), .B(B), .P(exact_out));
+    A1_8x8 uut_approx  (.A(A), .B(B), .P(approx_out));
 
     initial begin
 
