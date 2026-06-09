@@ -23,7 +23,8 @@
 
 module compressor_exact(input X1,X2,X3,X4,Cin, 
    output S,C,Cout);
-   
+
+  
 wire xor1, xor2, xor3;
 wire sum1;
 assign sum1 = xor1 ^ X3;   // intermediate sum of FA1

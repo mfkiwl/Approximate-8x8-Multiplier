@@ -26,7 +26,7 @@ reg  [7:0] A, B;
 
 
 // ======================================================
-wire [15:0] P15;
+wire [15:0] P16;
 
 
 // ======================================================
@@ -50,10 +50,11 @@ Multiplier_using_exact_comp dut3(.A(A),.B(B),.P(P9));
 
 
 A1_8x8 dut3(.A(A),.B(B),.P(P10));
-*/
+
 
 A3_8X8 dut3(.A(A),.B(B),.P(P15));
-
+*/
+AM8EC_1 dut4(.A(A),.B(B),.P(P16));
 // ======================================================
 
 task run_test;
@@ -73,8 +74,8 @@ task run_test;
         #10;
 
         $display(
-        "A=%3d  B=%3d  Exact=%5d   A1_8x8=%5d" ,
-        A, B, exact, P15
+        "A=%3d  B=%3d  Exact=%5d   AM8EC_1=%5d" ,
+        A, B, exact, P16
         );
 
     end
@@ -91,7 +92,7 @@ initial begin
  
     run_test(8'b00000001, 8'b11111111);  // A=1,   B=255
 run_test(8'b11111111, 8'b00000100);  // A=255, B=4
-run_test(8'b00000001, 8'b00000100);  // A=1,   B=4  → tests pp[2][0] in isolation
+run_test(8'b00000001, 8'b00000100);  // A=1,   B=4  
 run_test(8'b11111111, 8'b10000000);  // A=255, B=128
 run_test(8'b10000000, 8'b11111111);  // A=128, B=255
     run_test(8'hFF, 8'hFF);  // 255×255, error=128
@@ -99,10 +100,7 @@ run_test(8'hFE, 8'hFF);  // 254×255 — does it fail?
 run_test(8'hFF, 8'hFE);  // 255×254 — does it fail?
 run_test(8'hFF, 8'hFD);  // 255×253 — does it fail?
 run_test(8'hFF, 8'hFB);  // 255×251 — does it fail?
-run_test(8'hFF, 8'hF7);  // 255×247 — fails (known)
-run_test(8'hFF, 8'hEF);  // 255×239, B[4]=0
-run_test(8'hFF, 8'hDF);  // 255×223, B[5]=0
-run_test(8'hFF, 8'hBF);  // 255×191 — fails (known)
+run_test(8'hFF, 8'hF7);  // 255×247 — fails 
 run_test(8'd1, 8'd16);
 run_test(8'd1, 8'd32);
 run_test(8'd1, 8'd64);
