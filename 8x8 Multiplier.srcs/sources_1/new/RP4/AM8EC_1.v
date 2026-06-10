@@ -121,7 +121,7 @@ wire s11_,c11_to_12_,c11_to_c12_;
 compressor_exact COL11_COMP_2(.X1(s11),.X2(pp[6][5]),.X3(pp[7][4]),.X4(c10_to_11),.Cin(c10_to_c11_),.S(s11_),.C(c11_to_12_),.Cout(c11_to_c12_));
 
 //column 12
-wire s12_,c12_to_13_,c12_to_c13;
+wire s12_,c12_to_13_,c12_to_c13_;
 compressor_exact COL12_COMP_2(.X1(pp[5][7]),.X2(pp[6][6]),.X3(pp[7][5]),.X4(c11_to_12),.Cin(c11_to_c12_),.S(s12_),.C(c12_to_13_),.Cout(c12_to_c13_));
 
 //column 13
