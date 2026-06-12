@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 06/11/2026 11:54:34 PM
+// Create Date: 06/12/2026 03:31:58 PM
 // Design Name: 
-// Module Name: A6_8x8
+// Module Name: A6_FULL
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,17 +20,17 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module A6_8x8(A,B,P);
-
+module A6_FULL(A,B,P);
 input [7:0] A,B;
 output [15:0] P;
 
-wire [7:0] pp[7:0];
+wire[7:0] pp[7:0];
+
 genvar i;
 
 generate
-for(i=0;i<8;i=i+1) begin
-assign pp[i] = A & {8{B[i]}};
+for(i=0;i<8;i=i+1)begin
+assign pp[i] = A& {8{B[i]}};
 end
 endgenerate
 
@@ -56,22 +56,22 @@ A6_COMP COL7_COMP1(.X1(pp[0][7]),.X2(pp[1][6]),.X3(pp[2][5]),.X4(pp[3][4]),.C(c7
 A6_COMP COL7_COMP2(.X1(pp[4][3]),.X2(pp[5][2]),.X3(pp[6][1]),.X4(pp[7][0]),.C(c7_to_8_comp2),.S(s7_comp2));
 
 //column 8
-wire s8_comp,s8_fa,c8_to_9_comp,c8_to_9_fa,c8_to_c9_comp;
-compressor_exact COL8_COMP1(.X1(pp[1][7]),.X2(pp[2][6]),.X3(pp[3][5]),.X4(pp[4][4]),.Cin(1'b0),.S(s8_comp),.C(c8_to_9_comp),.Cout(c8_to_c9_comp));
+wire s8_comp,s8_fa,c8_to_9_comp,c8_to_9_fa;
+A6_COMP COL8_COMP1(.X1(pp[1][7]),.X2(pp[2][6]),.X3(pp[3][5]),.X4(pp[4][4]),.S(s8_comp),.C(c8_to_9_comp));
 Full_Adder COL8_FA1(.a(pp[5][3]),.b(pp[6][2]),.Cin(pp[7][1]),.sum(s8_fa),.Cout(c8_to_9_fa));
 
 //column 9
-wire s9_comp,s9_ha,c9_to_10_comp,c9_to_10_ha,c9_to_c10;
-compressor_exact COL9_COMP1(.X1(pp[2][7]),.X2(pp[3][6]),.X3(pp[4][5]),.X4(pp[5][4]),.Cin(c8_to_c9_comp),.S(s9_comp),.C(c9_to_10_comp),.Cout(c9_to_c10));
+wire s9_comp,s9_ha,c9_to_10_comp,c9_to_10_ha;
+A6_COMP COL9_COMP1(.X1(pp[2][7]),.X2(pp[3][6]),.X3(pp[4][5]),.X4(pp[5][4]),.S(s9_comp),.C(c9_to_10_comp));
 Half_Adder COL9_HA1(.a(pp[6][3]),.b(pp[7][2]),.sum(s9_ha),.carry(c9_to_10_ha));
 
 //column 10
-wire s10,c10_to_11,c10_to_c11;
-compressor_exact COL10_COMP1(.X1(pp[3][7]),.X2(pp[4][6]),.X3(pp[5][5]),.X4(pp[6][4]),.Cin(c9_to_c10),.S(s10),.C(c10_to_11),.Cout(c10_to_c11));
+wire s10,c10_to_11;
+A6_COMP COL10_COMP1(.X1(pp[3][7]),.X2(pp[4][6]),.X3(pp[5][5]),.X4(pp[6][4]),.S(s10),.C(c10_to_11));
 
 //column 11
 wire s11,c11_to_12;
-Full_Adder COL11_FA1(.a(pp[4][7]),.b(pp[5][6]),.Cin(c10_to_c11),.sum(s11),.Cout(c11_to_12));
+Full_Adder COL11_FA1(.a(pp[4][7]),.b(pp[5][6]),.Cin(1'b0),.sum(s11),.Cout(c11_to_12));
 
 // Stage 2
 //column 2
@@ -99,28 +99,28 @@ wire s7_,c7_to_8_;
 A6_COMP COL7_COMP_2(.X1(s7_comp1),.X2(s7_comp2),.X3(c6_to_7_comp),.X4(c6_to_7_ha),.C(c7_to_8_),.S(s7_));
 
 //column 8
-wire s8_,c8_to_9_,c8_to_c9_;
-compressor_exact COL8_COMP2(.X1(s8_comp),.X2(s8_fa),.X3(c7_to_8_comp1),.X4(c7_to_8_comp2),.Cin(1'b0),.S(s8_),.C(c8_to_9_),.Cout(c8_to_c9_));
+wire s8_,c8_to_9_;
+A6_COMP COL8_COMP2(.X1(s8_comp),.X2(s8_fa),.X3(c7_to_8_comp1),.X4(c7_to_8_comp2),.S(s8_),.C(c8_to_9_));
 
 //column 9
-wire s9_,c9_to_c10_,c9_to_10_;
-compressor_exact COL9_COMP2(.X1(s9_comp),.X2(s9_ha),.X3(c8_to_9_comp),.X4(c8_to_9_fa),.Cin(c8_to_c9_),.S(s9_),.C(c9_to_10_),.Cout(c9_to_c10_));
+wire s9_,c9_to_10_;
+A6_COMP COL9_COMP2(.X1(s9_comp),.X2(s9_ha),.X3(c8_to_9_comp),.X4(c8_to_9_fa),.S(s9_),.C(c9_to_10_));
 
 //column 10
-wire s10_,c10_to_c11_,c10_to_11_;
-compressor_exact COL10_COMP2(.X1(s10),.X2(c9_to_10_comp),.X3(c9_to_10_ha),.X4(pp[7][3]),.Cin(c9_to_c10_),.S(s10_),.C(c10_to_11_),.Cout(c10_to_c11_));
+wire s10_,c10_to_11_;
+A6_COMP COL10_COMP2(.X1(s10),.X2(c9_to_10_comp),.X3(c9_to_10_ha),.X4(pp[7][3]),.S(s10_),.C(c10_to_11_));
 
 //column 11
-wire s11_,c11_to_c12_,c11_to_12_;
-compressor_exact COL11_COMP2(.X1(s11),.X2(c10_to_11),.X3(pp[6][5]),.X4(pp[7][4]),.Cin(c10_to_c11_),.S(s11_),.C(c11_to_12_),.Cout(c11_to_c12_));
+wire s11_,c11_to_12_;
+A6_COMP COL11_COMP2(.X1(s11),.X2(c10_to_11),.X3(pp[6][5]),.X4(pp[7][4]),.S(s11_),.C(c11_to_12_));
 
 //column 12
-wire s12_,c12_to_c13_,c12_to_13_;
-compressor_exact COL12_COMP2(.X1(pp[5][7]),.X2(pp[6][6]),.X3(pp[7][5]),.X4(c11_to_12),.Cin(c11_to_c12_),.S(s12_),.C(c12_to_13_),.Cout(c12_to_c13_));
+wire s12_,c12_to_13_;
+A6_COMP COL12_COMP2(.X1(pp[5][7]),.X2(pp[6][6]),.X3(pp[7][5]),.X4(c11_to_12),.S(s12_),.C(c12_to_13_));
 
 //column 13
 wire s13_,c13_to_14_;
-Full_Adder COL13_FA2(.a(pp[6][7]),.b(pp[7][6]),.Cin(c12_to_c13_),.sum(s13_),.Cout(c13_to_14_));
+Full_Adder COL13_FA2(.a(pp[6][7]),.b(pp[7][6]),.Cin(1'b0),.sum(s13_),.Cout(c13_to_14_));
 
 // Stage 3
 wire [13:0] a,b;
