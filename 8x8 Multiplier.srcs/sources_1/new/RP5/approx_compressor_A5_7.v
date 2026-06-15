@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 06/11/2026 05:13:31 PM
+// Create Date: 06/16/2026 01:19:52 AM
 // Design Name: 
-// Module Name: A5_CAAM
+// Module Name: approx_compressor_A5_6
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,33 +20,25 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module A5_CAAM(A,B,P);
-input [7:0] A,B;
-output [15:0] P;
+module approx_compressor_A5_7(X1,X2,X3,X4,C,S);
+input X1,X2,X3,X4;
+output C,S;
 
-wire [7:0] pp[7:0];
+wire nand12, nand34;
+wire xnor12, xnor34;
 
-genvar i;
-
-generate 
-for(i=0;i<8;i=i+1) begin
- assign pp[i] = A & {8{B[i]}};
-end
-endgenerate
-
-assign P[3:0] = 4'd0;
-
-// Stage 1
-//column 4
-Half_Adder COL4_HA1();
+assign nand12 = ~(X1 & X2);
+assign nand34 = ~(X3 & X4);
 
 
+assign C = ~(nand12 & nand34);
 
 
+assign xnor12 = ~(X1 ^ X2);   // X1 XNOR X2
+assign xnor34 = ~(X3 ^ X4);   // X3 XNOR X4
 
 
-
-
-
+assign S = xnor12 & xnor34 & nand12 & nand34;
 
 endmodule
+
