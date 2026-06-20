@@ -133,5 +133,6 @@ wire [10:0]s;
 RCA_10bit Adder(.a(a),.b(b),.s(s));
 
 assign P[15:5] = s;
+assign P[4] = s4_;
 
 endmodule
