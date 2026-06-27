@@ -55,8 +55,10 @@ A1_8x8 dut3(.A(A),.B(B),.P(P10));
 A3_8X8 dut3(.A(A),.B(B),.P(P15));
 
 AM8EC_1 dut4(.A(A),.B(B),.P(P16));
+
+A8_8x8_exact dut4(.A(A),.B(B),.P(P17));
 */
-A6_FULL dut4(.A(A),.B(B),.P(P17));
+A8_Conf_8x8 dut4(.A(A),.B(B),.P(P17));
 // ======================================================
 
 task run_test;
@@ -76,7 +78,7 @@ task run_test;
         #10;
 
         $display(
-        "A=%3d  B=%3d  Exact=%5d   A6_FULL=%5d" ,
+        "A=%3d  B=%3d  Exact=%5d   A8_Conf_8x8=%5d" ,
         A, B, exact, P17
         );
 
@@ -111,6 +113,7 @@ run_test(8'd2, 8'd128);
 run_test(8'd16, 8'd16);
 run_test(8'd32, 8'd32);
     
+
     $display("====================================================================");
 
     $finish;

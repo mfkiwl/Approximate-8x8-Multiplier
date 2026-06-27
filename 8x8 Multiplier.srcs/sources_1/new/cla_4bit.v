@@ -19,37 +19,29 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
 module cla_4bit (
-    input  [3:0] a,
-    input  [3:0] b,
-    input        cin,
-    output [3:0] sum,
-    output       cout,
-    output       P,      // group propagate
-    output       G       // group generate
+    input  [3:0] A, B,
+    input        Cin,
+    output [3:0] Sum,
+    output       Cout,
+    output       PG,
+    output       GG
 );
-    // Bit-level generate and propagate
-    wire [3:0] g, p;
-    assign g = a & b;          // g[i] = a[i] AND b[i]
-    assign p = a ^ b;          // p[i] = a[i] XOR b[i]
- 
-    // Carry lookahead logic
-    wire [3:0] c;
-    assign c[0] = cin;
-    assign c[1] = g[0] | (p[0] & cin);
-    assign c[2] = g[1] | (p[1] & g[0]) | (p[1] & p[0] & cin);
-    assign c[3] = g[2] | (p[2] & g[1]) | (p[2] & p[1] & g[0]) | (p[2] & p[1] & p[0] & cin);
- 
-    // Sum outputs
-    assign sum = p ^ c;
- 
-    // Carry out of this block
-    assign cout = g[3] | (p[3] & g[2]) | (p[3] & p[2] & g[1])
-                       | (p[3] & p[2] & p[1] & g[0])
-                       | (p[3] & p[2] & p[1] & p[0] & cin);
- 
-    // Group propagate and generate (for higher-level CLA)
-    assign P = p[3] & p[2] & p[1] & p[0];
-    assign G = g[3] | (p[3] & g[2]) | (p[3] & p[2] & g[1]) | (p[3] & p[2] & p[1] & g[0]);
+    wire [3:0] P, G;
+    wire [4:0] C;
+
+    assign P = A ^ B;
+    assign G = A & B;
+
+    assign C[0] = Cin;
+    assign C[1] = G[0] | (P[0] & C[0]);
+    assign C[2] = G[1] | (P[1] & G[0]) | (P[1] & P[0] & C[0]);
+    assign C[3] = G[2] | (P[2] & G[1]) | (P[2] & P[1] & G[0]) | (P[2] & P[1] & P[0] & C[0]);
+    assign C[4] = G[3] | (P[3] & G[2]) | (P[3] & P[2] & G[1]) | (P[3] & P[2] & P[1] & G[0]) | (P[3] & P[2] & P[1] & P[0] & C[0]);
+
+    assign Sum  = P ^ C[3:0];
+    assign Cout = C[4];
+
+    assign PG = P[3] & P[2] & P[1] & P[0];
+    assign GG = G[3] | (P[3] & G[2]) | (P[3] & P[2] & G[1]) | (P[3] & P[2] & P[1] & G[0]);
 endmodule
