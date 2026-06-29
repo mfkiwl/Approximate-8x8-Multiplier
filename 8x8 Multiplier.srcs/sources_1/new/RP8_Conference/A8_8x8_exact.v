@@ -122,11 +122,11 @@ wire a_4_9,b_5_9,S9_4,c9_r4;
 wire a_3_9,b_6_9,S9_5,c9_r5;
 wire a_2_9,b_7_9,c9_r6;
 PPU P9_1(.a(a_7_8),.b(b_2_8),.Cin(c8_r2),.Sin(c8_r1),.A(a_7_9),.B(b_2_9),.Sout(S9_1),.Cout(c9_r1));
-PPU P9_2(.a(a_6_8),.b(b_3_7),.Cin(c8_r3),.Sin(S9_1),.A(a_6_9),.B(b_3_9),.Sout(S9_2),.Cout(c9_r2));
-PPU P9_3(.a(a_5_8),.b(b_4_7),.Cin(c8_r4),.Sin(S9_2),.A(a_5_9),.B(b_4_9),.Sout(S9_3),.Cout(c9_r3));
-PPU P9_4(.a(a_4_8),.b(b_5_7),.Cin(c8_r5),.Sin(S9_3),.A(a_4_9),.B(b_5_9),.Sout(S9_4),.Cout(c9_r4));
-PPU P9_5(.a(a_3_8),.b(b_6_7),.Cin(c8_r6),.Sin(S9_4),.A(a_3_9),.B(b_6_9),.Sout(S9_5),.Cout(c9_r5));
-PPU P9_6(.a(a_2_8),.b(b_7_7),.Cin(c8_r7),.Sin(S9_5),.A(a_2_9),.B(b_7_9),.Sout(P[9]),.Cout(c9_r6));
+PPU P9_2(.a(a_6_8),.b(b_3_8),.Cin(c8_r3),.Sin(S9_1),.A(a_6_9),.B(b_3_9),.Sout(S9_2),.Cout(c9_r2));
+PPU P9_3(.a(a_5_8),.b(b_4_8),.Cin(c8_r4),.Sin(S9_2),.A(a_5_9),.B(b_4_9),.Sout(S9_3),.Cout(c9_r3));
+PPU P9_4(.a(a_4_8),.b(b_5_8),.Cin(c8_r5),.Sin(S9_3),.A(a_4_9),.B(b_5_9),.Sout(S9_4),.Cout(c9_r4));
+PPU P9_5(.a(a_3_8),.b(b_6_8),.Cin(c8_r6),.Sin(S9_4),.A(a_3_9),.B(b_6_9),.Sout(S9_5),.Cout(c9_r5));
+PPU P9_6(.a(a_2_8),.b(b_7_8),.Cin(c8_r7),.Sin(S9_5),.A(a_2_9),.B(b_7_9),.Sout(P[9]),.Cout(c9_r6));
 
 //column 10
 wire a_7_10,b_3_10,S10_1,c10_r1;
