@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 06/30/2026 12:20:53 AM
+// Create Date: 06/30/2026 03:00:43 PM
 // Design Name: 
-// Module Name: cd4_A8T
+// Module Name: cd6_A8T
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,7 +20,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module cd4_A8T(A,B,P);
+module cd6_A8T(A,B,P);
+    
 input [7:0] A;
 input [4:0] B;
 output [11:0] P;
@@ -55,33 +56,34 @@ CD_PPU COL3_P2(.ai(a_1_2),.bi(b_2_2),.Sin(S3_1),.Sout(S3_2),.Ai(a_1_3),.Bi(b_2_3
 CD_PPU COL3_P3(.ai(a_0_2),.bi(B[3]),.Sin(S3_2),.Sout(P[3]),.Ai(a_0_3),.Bi(b_3_3));
 
 //column 4
-wire a_3_4,b_1_4,a_2_4,b_2_4,S4_1,c4_r1,b_3_4,a_1_4,c4_r2;
-PPUF COL4_P1(.ai(A[3]),.bi(b_1_3),.aj(a_2_3),.bj(b_2_3),.Sin(pp[4]),.Ai(a_3_4),.Bi(b_1_4),.Aj(a_2_4),.Bj(b_2_4),.Sout(S4_1),.Cout(c4_r1));
-PPUH COL4_P2(.ai(a_1_3),.bi(b_3_3),.Sin(S4_1),.Sout(P[4]),.Cout(c4_r2),.Ai(a_1_4),.Bi(b_3_4));
+wire a_3_4,b_1_4,S4_1;
+wire a_2_4,b_2_4,S4_2;
+wire a_1_4,b_3_4;
+CD_PPU COL4_P1(.ai(A[3]),.bi(b_1_3),.Sin(pp[4]),.Sout(S4_1),.Ai(a_3_4),.Bi(b_1_4));
+CD_PPU COL4_P2(.ai(a_2_3),.bi(b_2_3),.Sin(S4_1),.Sout(S4_2),.Ai(a_2_4),.Bi(b_2_4));
+CD_PPU COL4_P3(.ai(a_1_3),.bi(b_3_3),.Sin(S4_2),.Sout(P[4]),.Ai(a_1_4),.Bi(b_3_4));
 
 //column 5
-wire a_4_5,b_1_5,c5_r1,S5_1;
-wire a_3_5,b_2_5,c5_r2,S5_2;
-wire a_2_5,b_3_5,c5_r3;
-PPUH COL5_P1(.ai(A[4]),.bi(b_1_4),.Sin(pp[5]),.Sout(S5_1),.Cout(c5_r1),.Ai(a_4_5),.Bi(b_1_5));
-PPU COL5_P2(.a(a_3_4),.b(b_2_4),.Cin(c4_r1),.Sin(S5_1),.A(a_3_5),.B(b_2_5),.Sout(S5_2),.Cout(c5_r2));
-PPU COL5_P3(.a(a_2_4),.b(b_3_4),.Cin(c4_r2),.Sin(S5_2),.A(a_2_5),.B(b_3_5),.Sout(P[5]),.Cout(c5_r3));
+wire a_4_5,b_1_5,S5_1;
+wire a_3_5,b_2_5,S5_2;
+wire a_2_5,b_3_5;
+CD_PPU COL5_P1(.ai(A[4]),.bi(b_1_4),.Sin(pp[5]),.Sout(S5_1),.Ai(a_4_5),.Bi(b_1_5));
+CD_PPU COL5_P2(.ai(a_3_4),.bi(b_2_4),.Sin(S5_1),.Sout(S5_2),.Ai(a_3_5),.Bi(b_2_5));
+CD_PPU COL5_P3(.ai(a_2_4),.bi(b_3_4),.Sin(S5_2),.Sout(P[5]),.Ai(a_2_5),.Bi(b_3_5));
 
 //column 6
-wire a_5_6,b_1_6,S6_1,c6_r1;
-wire a_4_6,b_2_6,S6_2,c6_r2;
-wire a_3_6,b_3_6,c6_r3;
-PPU COL6_P1(.a(A[5]),.b(b_1_5),.Cin(c5_r1),.Sin(pp[6]),.A(a_5_6),.B(b_1_6),.Sout(S6_1),.Cout(c6_r1));
-PPU COL6_P2(.a(a_4_5),.b(b_2_5),.Cin(c5_r2),.Sin(S6_1),.A(a_4_6),.B(b_2_6),.Sout(S6_2),.Cout(c6_r2));
-PPU COL6_P3(.a(a_3_5),.b(b_3_5),.Cin(c5_r3),.Sin(S6_2),.A(a_3_6),.B(b_3_6),.Sout(P[6]),.Cout(c6_r3));
+wire a_5_6,b_1_6,a_4_6,b_2_6,S6_1,c6_r1;
+wire c6_r2,a_3_6,b_3_6;
+PPUF COL6_P1(.ai(A[5]),.bi(b_1_5),.aj(a_4_4),.bj(b_2_5),.Sin(pp[6]),.Ai(a_5_6),.Bi(b_1_6),.Aj(a_4_6),.Bj(b_2_6),.Sout(S6_1),.Cout(c6_r1));
+PPUH COL6_P2(.ai(a_3_5),.bi(b_3_5),.Sin(S6_1),.Sout(P[6]),.Cout(c6_r2),.Ai(a_3_6),.Bi(b_3_6));
 
 //column 7
 wire a_6_7,b_1_7,S7_1,c7_r1;
 wire a_5_7,b_2_7,S7_2,c7_r2;
 wire a_4_7,b_3_7,c7_r3;
-PPU COL7_P1(.a(A[6]),.b(b_1_6),.Cin(c6_r1),.Sin(pp[7]),.A(a_6_7),.B(b_1_7),.Sout(S7_1),.Cout(c7_r1));
-PPU COL7_P2(.a(a_5_6),.b(b_2_6),.Cin(c6_r2),.Sin(S7_1),.A(a_5_7),.B(b_2_7),.Sout(S7_2),.Cout(c7_r2));
-PPU COL7_P3(.a(a_4_6),.b(b_3_6),.Cin(c6_r3),.Sin(S7_2),.A(a_4_7),.B(b_3_7),.Sout(P[7]),.Cout(c7_r3));
+PPUH COL7_P1(.ai(A[6]),.bi(b_1_6),.Sin(pp[7]),.Sout(S7_1),.Cout(c7_r1),.Ai(a_6_7),.Bi(b_1_7));
+PPU COL7_P2(.a(a_5_6),.b(b_2_6),.Cin(c6_r1),.Sin(S7_1),.A(a_5_7),.B(b_2_7),.Sout(S7_2),.Cout(c7_r2));
+PPU COL7_P3(.a(a_4_6),.b(b_3_6),.Cin(c6_r2),.Sin(S7_2),.A(a_4_7),.B(b_3_7),.Sout(P[7]),.Cout(c7_r3));
 
 //column 8
 wire a_7_8,b_1_8,S8_1,c8_r1;
