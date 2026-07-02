@@ -59,8 +59,23 @@ AM8EC_1 dut4(.A(A),.B(B),.P(P16));
 A8_8x8_exact dut4(.A(A),.B(B),.P(P17));
 
 A8_Conf_8x8 dut4(.A(A),.B(B),.P(P17));
-*/
+
 exact_8x8_A8T dut4(.A(A),.B(B),.P(P17));
+
+CDM8_44T dut4(.A(A),.B(B),.P(P17));
+CDM8_50T dut4(.A(A),.B(B),.P(P17));
+
+CDM8_62T dut4(.A(A),.B(B),.P(P17));
+CDM8_73T dut4(.A(A),.B(B),.P(P17));
+CDM8_74T dut4(.A(A),.B(B),.P(P17));
+CDM8_84T dut4(.A(A),.B(B),.P(P17));
+CDM8_95T dut4(.A(A),.B(B),.P(P17));
+CDM8_a6T dut4(.A(A),.B(B),.P(P17));
+CDM8_a7T dut4(.A(A),.B(B),.P(P17));
+CDM8_a8T dut4(.A(A),.B(B),.P(P17));
+CDM8_a9T dut4(.A(A),.B(B),.P(P17));
+*/
+CDM8_aaT dut4(.A(A),.B(B),.P(P17));
 // ======================================================
 
 task run_test;
@@ -80,7 +95,7 @@ task run_test;
         #10;
 
         $display(
-        "A=%3d  B=%3d  Exact=%5d   exact_8x8_A8T=%5d" ,
+        "A=%3d  B=%3d  Exact=%5d   CDM8_aaT=%5d" ,
         A, B, exact, P17
         );
 

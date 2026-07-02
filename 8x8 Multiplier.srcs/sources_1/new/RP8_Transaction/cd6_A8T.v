@@ -74,7 +74,7 @@ CD_PPU COL5_P3(.ai(a_2_4),.bi(b_3_4),.Sin(S5_2),.Sout(P[5]),.Ai(a_2_5),.Bi(b_3_5
 //column 6
 wire a_5_6,b_1_6,a_4_6,b_2_6,S6_1,c6_r1;
 wire c6_r2,a_3_6,b_3_6;
-PPUF COL6_P1(.ai(A[5]),.bi(b_1_5),.aj(a_4_4),.bj(b_2_5),.Sin(pp[6]),.Ai(a_5_6),.Bi(b_1_6),.Aj(a_4_6),.Bj(b_2_6),.Sout(S6_1),.Cout(c6_r1));
+PPUF COL6_P1(.ai(A[5]),.bi(b_1_5),.aj(a_4_5),.bj(b_2_5),.Sin(pp[6]),.Ai(a_5_6),.Bi(b_1_6),.Aj(a_4_6),.Bj(b_2_6),.Sout(S6_1),.Cout(c6_r1));
 PPUH COL6_P2(.ai(a_3_5),.bi(b_3_5),.Sin(S6_1),.Sout(P[6]),.Cout(c6_r2),.Ai(a_3_6),.Bi(b_3_6));
 
 //column 7

@@ -45,7 +45,7 @@ wire a_1_2,b_1_2,b_2_2,a_0_2,c2_r1;
 PPUF COL2_P1(.ai(A[1]),.bi(b_1_1),.aj(a_0_1),.bj(B[2]),.Sin(pp[2]),.Ai(a_1_2),.Bi(b_1_2),.Aj(a_0_2),.Bj(b_2_2),.Sout(P[2]),.Cout(c2_r1));
 
 //column 3
-wire a_2_3,b_1_3,a_1_3,b_2_3,S3_1,S3_2,c3_r2,c3_r3,a_0_3,b_3_3;
+wire a_2_3,b_1_3,a_1_3,b_2_3,S3_1,S3_2,c3_r2,c3_r3,a_0_3,b_3_3,c3_r1;
 PPUH COL3_P1(.ai(A[2]),.bi(b_1_2),.Sin(pp[3]),.Sout(S3_1),.Cout(c3_r1),.Ai(a_2_3),.Bi(b_1_3));
 PPU COL3_P2(.a(a_1_2),.b(b_2_2),.Cin(c2_r1),.Sin(S3_1),.A(a_1_3),.B(b_2_3),.Sout(S3_2),.Cout(c3_r2));
 PPU COL3_P3(.a(a_0_2),.b(B[3]),.Cin(1'b0),.Sin(S3_2),.A(a_0_3),.B(b_3_3),.Sout(P[3]),.Cout(c3_r3));
